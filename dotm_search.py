@@ -29,22 +29,20 @@ def dir_search(*cmd_args):
                                 print "Match found in file " + file + "\n" + line[a - 40: a] + line[a: a + 40]
 
 
-# def dotm_search(text):
-#     items = os.listdir(os.getcwd())
+def dotm_search(text):
+    items = os.listdir(os.getcwd())
 
-#     for d in items:
-#         for f in os.listdir(d):
-#             print f
-        # file = './' + f
+    for d in items:
+        file = './' + d
 
-        # if f.endswith(".dotm"):
-        #     with zipfile.ZipFile(file) as myzip:
-        #         if 'word/document.xml' in myzip.namelist():
-        #             with myzip.open('word/document.xml') as doc_text:
-        #                 for line in doc_text:
-        #                     if text in line:
-        #                         a = line.index(text)
-        #                         print "Match found in file " + file + "\n" + line[a - 40: a] + line[a: a + 40]
+        if d.endswith(".dotm"):
+            with zipfile.ZipFile(file) as myzip:
+                if 'word/document.xml' in myzip.namelist():
+                    with myzip.open('word/document.xml') as doc_text:
+                        for line in doc_text:
+                            if text in line:
+                                a = line.index(text)
+                                print "Match found in file " + file + "\n" + line[a - 40: a] + line[a: a + 40]
 
 
 
